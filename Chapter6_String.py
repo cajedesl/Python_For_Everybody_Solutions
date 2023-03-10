@@ -66,3 +66,6 @@ understand how they work. strip and replace are particularly useful.
 
 str = 'X-DSPAM-Confidence:0.8475'
 
+digits = str[str.find(':')+1:]
+number = float(digits)
+print('This %s is now a float number!' % number)
