@@ -61,6 +61,19 @@ while True:
 
     lat = js['results'][0]['geometry']['location']['lat']
     lng = js['results'][0]['geometry']['location']['lng']
+
+    data = js['results'][0]
+    adress_components = data['address_components']
+
     print('lat', lat, 'lng', lng)
     location = js['results'][0]['formatted_address']
     print(location)
+
+    try:
+        for element in adress_components:
+            if element["types"] == ["country", "political"]:
+                print("Country code: ", element["short_name"])
+            else:
+                raise Exception
+    except:
+        print("No country code.")
